@@ -1,8 +1,17 @@
 import { FaRegBookmark, FaShareAlt, FaEye, FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, rating, total_view, author, details, thumbnail_url, tags } =
-    news;
+  const {
+    id,
+    title,
+    rating,
+    total_view,
+    author,
+    details,
+    thumbnail_url,
+    tags,
+  } = news;
 
   return (
     <div className="rounded-xl shadow-sm hover:shadow-md transition-all duration-300 bg-white p-2 cursor-pointer">
@@ -39,7 +48,13 @@ const NewsCard = ({ news }) => {
 
       {/* Details */}
       <p className="text-gray-700 text-sm leading-relaxed mb-2">
-        {details.slice(0, 200)}...
+        {details.slice(0, 200)}{" "}
+        <Link
+          to={`/news-details/${id}`}
+          className="bg-secondary text-white px-2 rounded-sm hover:bg-primary"
+        >
+          Read More ...
+        </Link>
       </p>
 
       {/* Tags */}
